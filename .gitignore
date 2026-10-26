@@ -1,0 +1,55 @@
+# Project-specific ignored files & datasets
+tmp/
+djoumessi26a_compressed.pdf
+softcam/files/
+softcam/csv_files/
+
+# Python bytecode & cache
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Jupyter Notebook checkpoints
+**/.ipynb_checkpoints/
+
+# Virtual environments & packaging
+.venv/
+venv/
+env/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# PyTorch weights & checkpoints
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.onnx
+checkpoints/
+
+# Training logs & experiment tracking
+runs/
+logs/
+wandb/
+*.log
+
+# Large data archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# IDE & Editor folders
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
