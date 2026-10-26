@@ -2,7 +2,7 @@
 tmp/
 djoumessi26a_compressed.pdf
 softcam/files/
-softcam/csv_files/
+# softcam/csv_files/
 
 # Python bytecode & cache
 **/__pycache__/
