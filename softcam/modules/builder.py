@@ -37,7 +37,8 @@ def build_model(cfg, num_classes):
     elif 'inception' in network:
         model = timm.create_model('inception_v4', pretrained=True)
     else:
-        model = BUILDER[network](weights=WEIGHTS[network])
+        weights = WEIGHTS[network] if pretrained else None
+        model = BUILDER[network](weights=weights)
 
     if network == 'retfound':
         pass 

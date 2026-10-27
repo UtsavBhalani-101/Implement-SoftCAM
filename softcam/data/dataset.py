@@ -26,7 +26,7 @@ class FundusDataset(Dataset):
         self.labels = self.df[self.str_label]
         self.classes = sorted(list(set(self.targets)))
         
-        if cfg.base.test:            
+        if getattr(cfg.base, 'test', False):
             n=cfg.base.sample
             self.filenames = self.filenames[:n]
             self.labels = self.labels[:n]
@@ -81,7 +81,7 @@ class RSNADataset(Dataset):
         else:
             self.df = pd.read_csv(cfg.dset.test_csv)
 
-        if cfg.base.test:
+        if getattr(cfg.base, 'test', False):
             n=cfg.base.sample
             self.df = self.df.sample(n).reset_index(drop=True)
 
@@ -121,7 +121,7 @@ class OCTDataset(Dataset):
         else:
             self.df = pd.read_csv(os.path.join(cfg.dset.test_csv))
         
-        if cfg.base.test:            
+        if getattr(cfg.base, 'test', False):
             n=cfg.base.sample
             self.df = self.df.sample(n).reset_index(drop=True)
 

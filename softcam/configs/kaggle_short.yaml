@@ -2,6 +2,7 @@ base:
   dataset: RSNA
   device: cuda
   random_seed: 0
+  test: false
 
 dset:
   save_path: /kaggle/working/softcam_short_rsna
@@ -12,6 +13,12 @@ data:
   sampling_weights_decay_rate: 0.9
   augmentation: None
   data_augmentation: [random_crop, horizontal_flip, rotation, translation]
+
+base:
+  dataset: RSNA
+  device: cuda
+  random_seed: 0
+  test: false
 
 train:
   network: resnet50
