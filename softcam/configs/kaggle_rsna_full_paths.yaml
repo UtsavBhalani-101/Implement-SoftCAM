@@ -1,7 +1,7 @@
 RSNA:
   dset_name: RSNA
-  root: /kaggle/input/competitions/rsna-pneumonia-detection-challenge
-  data_dir: png_images
+  root: /kaggle/input/datasets/antiti/rsna-pneumonia-png
+  data_dir: rsna_png
   train_csv: ./csv_files/RSNA/train.csv
   val_csv: ./csv_files/RSNA/val.csv
   test_csv: ./csv_files/RSNA/test.csv
