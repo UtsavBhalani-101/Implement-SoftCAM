@@ -1,0 +1,15 @@
+RSNA:
+  dset_name: RSNA
+  root: /kaggle/input/competitions/rsna-pneumonia-detection-challenge
+  data_dir: png_images
+  train_csv: ./csv_files/RSNA/train.csv
+  val_csv: ./csv_files/RSNA/val.csv
+  test_csv: ./csv_files/RSNA/test.csv
+  target: bin_target
+  fname: filename
+  mean: [0.488974928855896, 0.488974928855896, 0.488974928855896]
+  std: [0.2458493563902557, 0.2458493563902557, 0.2458493563902557]
+  num_classes: 2
+  binary: true
+  threshold: false
+  input_size: 512

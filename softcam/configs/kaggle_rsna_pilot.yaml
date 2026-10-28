@@ -1,0 +1,59 @@
+base:
+  dataset: RSNA
+  device: cuda
+  random_seed: 0
+  test: false
+
+dset:
+  save_path: /kaggle/working/rsna_resnet50_pilot
+
+data:
+  binary: true
+  sampling_strategy: instance_balanced
+  sampling_weights_decay_rate: 0.9
+  augmentation: None
+  data_augmentation: [random_crop, horizontal_flip, rotation, translation]
+
+train:
+  network: resnet50
+  conv_cls: true
+  pretrained: false
+  checkpoint: null
+  epochs: 1
+  batch_size: 4
+  num_workers: 2
+  criterion: cross_entropy
+  loss_weight: null
+  loss_weight_decay_rate: 0
+  warmup_epochs: 0
+  kappa_prior: false
+  save_interval: 1
+  eval_interval: 1
+  sample_view: false
+  sample_view_interval: 100
+  pin_memory: true
+  lambda_l1: 0.0
+  lambda_l2: 0.00004
+
+solver:
+  optimizer: SGD
+  learning_rate: 0.001
+  lr_scheduler: clipped_cosine
+  momentum: 0.9
+  nesterov: true
+  weight_decay: 0.0005
+
+criterion_args:
+  cross_entropy: {}
+
+scheduler_args:
+  clipped_cosine:
+    T_max: 1
+    min_lr: 0.0001
+
+data_augmentation_args:
+  horizontal_flip: {prob: 0.5}
+  random_crop: {prob: 0.5, scale: [0.87, 1.15], ratio: [0.7, 1.3]}
+  rotation: {prob: 0.5, degrees: [-30, 30]}
+  translation: {prob: 0.5, range: [0.2, 0.2]}
+  value_fill: 0
