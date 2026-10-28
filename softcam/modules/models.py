@@ -94,6 +94,6 @@ class SparseBagnet(nn.Module):
         out = avgpool(activation)           # (bs, n_class, 1, 1) 
         out = out.view(out.shape[0], -1)    # (bs, n_class)
 
-        att_weight = torch.zeros((bs, c, h, w), device='cuda')
+        att_weight = torch.zeros((bs, c, h, w), device=x.device)
         
         return out, activation, att_weight

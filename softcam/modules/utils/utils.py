@@ -127,7 +127,7 @@ class SparseBagnet(nn.Module):
         out = avgpool(activation)           # (bs, n_class, 1, 1) 
         out = out.view(out.shape[0], -1)    # (bs, n_class)
 
-        att_weight = torch.zeros((bs, c, h, w), device='cuda')
+        att_weight = torch.zeros((bs, c, h, w), device=x.device)
         
         return out, activation, att_weight
 
@@ -155,7 +155,7 @@ class FullyConvModel(nn.Module):
         out = avgpool(activation)           # (bs, n_class, 1, 1) 
         out = out.view(out.shape[0], -1)    # (bs, n_class)
 
-        att_weight = torch.zeros((bs, c, h, w), device='cuda')
+        att_weight = torch.zeros((bs, c, h, w), device=x.device)
         
         return out, activation, att_weight
 
@@ -185,7 +185,7 @@ class ConvPenultimate(nn.Module):
         if self.cfg.train.train_with_att:
             att_weight = x
         else:
-            att_weight = torch.zeros((bs, c, h, w), device='cuda')
+            att_weight = torch.zeros((bs, c, h, w), device=x.device)
         return out, heatmap, att_weight
 
 ## FCL classification layer
@@ -201,11 +201,11 @@ class FCLPenultimate(nn.Module):
         x = self.avgpool(x)
         x = torch.flatten(x, 1)  
         out = self.classifier(x)
-        heatmap = torch.zeros((bs, 2, h, w), device='cuda')
+        heatmap = torch.zeros((bs, 2, h, w), device=x.device)
         if self.cfg.train.train_with_att:
             att_weight = x
         else:
-            att_weight = torch.zeros((bs, c, h, w), device='cuda')
+            att_weight = torch.zeros((bs, c, h, w), device=x.device)
         return out, heatmap, att_weight
 
 ## Multitask model 

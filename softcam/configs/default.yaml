@@ -2,6 +2,7 @@ base:
   dataset: RSNA # in ['Fundus', 'RSNA', Retinal_OCT]
   device: cuda 
   random_seed: 0
+  test: false
 
 dset:
   save_path: null
