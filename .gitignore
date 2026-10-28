@@ -1,5 +1,8 @@
 # Project-specific ignored files & datasets
+data/
+softcam/data/
 tmp/
+softcam/tmp/
 djoumessi26a_compressed.pdf
 softcam/files/
 softcam/requirements2.txt
