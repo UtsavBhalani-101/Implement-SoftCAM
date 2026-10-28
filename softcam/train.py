@@ -9,6 +9,7 @@ from torch.utils.data import DataLoader
 from datetime import datetime
 
 from modules.loss import *
+from modules.regularization import evidence_penalty
 from modules.scheduler import *
 from utils.func import save_weights, print_msg, inverse_normalize, select_target_type, matplotlib_roccurve, matplotlib_prec_recall_curve, plot_conf_matrix
 
@@ -66,9 +67,8 @@ def train(cfg, model, train_dataset, val_dataset, estimator, logger=None):
             # forward
             if cfg.train.conv_cls:
                 y_pred, activations = model(X)
-                l1_reg = torch.norm(activations[0], 1)
-                l2_reg = torch.norm(activations[0], 2) 
-                loss = loss_function(y_pred, y) + (lambda_l1 * l1_reg) + (lambda_l2 * l2_reg)
+                penalty = evidence_penalty(activations, lambda_l1, lambda_l2)
+                loss = loss_function(y_pred, y) + penalty
             else:
                 y_pred = model(X)
                 loss = loss_function(y_pred, y)
