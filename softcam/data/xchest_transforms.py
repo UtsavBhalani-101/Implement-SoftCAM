@@ -5,7 +5,7 @@ from torchvision import transforms
 def basic_xchest_transform(cfg, p=0.5):
     # used for the XAI challenge
     normalization = [
-        transforms.Resize((cfg.data.input_size)), 
+        transforms.Resize((cfg.data.input_size, cfg.data.input_size)),
         transforms.ToTensor(),
         transforms.CenterCrop(cfg.data.input_size),
         transforms.Normalize(cfg.data.mean, cfg.data.std)

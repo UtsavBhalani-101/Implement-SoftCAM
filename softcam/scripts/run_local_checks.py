@@ -11,4 +11,4 @@ subprocess.run([
     sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"
 ], cwd=ROOT, check=True)
 
-print("Phase 0 and Phase 1 checks passed")
+print("Local validation checks passed")
